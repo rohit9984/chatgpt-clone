@@ -1,0 +1,46 @@
+.newchat{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--surface-2-color);
+    color: var(--color);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.newchat svg{
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--accent-color);
+}
+
+.newchat.collapsed{
+    justify-content: center;
+    padding: 9px 6px;
+}
+
+.newchat:hover,
+.newchat:focus-visible{
+    background-color: var(--hover-surface);
+    border-color: var(--accent-color);
+}
+
+.newchat:active{
+    transform: scale(0.98);
+}
+
+@media (max-width: 600px){
+    .newchat{
+        font-size: 14px;
+    }
+}

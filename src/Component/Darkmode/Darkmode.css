@@ -1,0 +1,47 @@
+.theme-toggle{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(48px, 8vh, 60px);
+    height: clamp(48px, 8vh, 60px);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    background-color: var(--surface-2-color);
+    color: var(--color);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.theme-toggle:hover{
+    background-color: var(--hover-surface);
+    border-color: var(--accent-color);
+}
+
+.theme-toggle:active{
+    transform: scale(0.95);
+}
+
+.theme-toggle:focus-visible{
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle svg{
+    width: clamp(21px, 4vh, 26px);
+    height: clamp(21px, 4vh, 26px);
+}
+
+/* Short / landscape phones */
+@media (max-height: 520px){
+    .theme-toggle{
+        width: 48px;
+        height: 48px;
+    }
+}

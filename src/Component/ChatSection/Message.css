@@ -1,0 +1,81 @@
+.message-row{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: min(75%, 700px);
+}
+
+.message-row.user{
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message-row.model,
+.message-row.error{
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.message{
+    padding: clamp(9px, 2vw, 12px) clamp(13px, 3vw, 18px);
+    border-radius: 18px;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap;
+    color: var(--color);
+    background-color: var(--message-background-color);
+}
+
+.message.user{
+    background-color: var(--user-message-background-color);
+}
+
+.message.error{
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+.message-copy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--muted-color);
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.message-row:hover .message-copy,
+.message-copy:focus-visible{
+    opacity: 1;
+}
+
+.message-copy:hover{
+    background-color: var(--hover-surface);
+    color: var(--color);
+}
+
+/* Always visible where hover isn't available */
+@media (hover: none){
+    .message-copy{
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px){
+    .message-row{
+        max-width: 90%;
+    }
+
+    .message{
+        border-radius: 14px;
+    }
+}

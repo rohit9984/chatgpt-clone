@@ -1,0 +1,21 @@
+# Render blueprint (https://render.com) - free Node web service.
+# Secrets are set in the Render dashboard, never committed.
+services:
+  - type: web
+    name: chatgpt-clone
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY_2
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false

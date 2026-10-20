@@ -1,0 +1,257 @@
+.sidebar{
+    padding: 14px 12px;
+    height: 100dvh;
+    width: 70px; /* collapsed rail */
+    flex-shrink: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    color: var(--color);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: start;
+    font-size: 15px;
+    transition: width 0.3s ease;
+}
+
+.sidebar.open{
+    width: 260px;
+}
+
+/* Thin, theme-aware scrollbar */
+.sidebar::-webkit-scrollbar{
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background-color: var(--hover-surface);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+    background-color: var(--active-surface);
+}
+
+/* ---------- Header ---------- */
+.sidebar-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 2px 2px 0;
+}
+
+.sidebar-brand{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.sidebar-brand svg{
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: var(--accent-color);
+}
+
+.sidebar-brand-name{
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.icon-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--color);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.icon-btn:hover{
+    background-color: var(--hover-surface);
+}
+
+.icon-btn:focus-visible{
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+#ham svg,
+.icon-btn svg{
+    width: 20px;
+    height: 20px;
+}
+
+/* ---------- Sections ---------- */
+.sidebar-section{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    min-height: 0;
+}
+
+.sidebar-label{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: var(--muted-color);
+    white-space: nowrap;
+}
+
+.sidebar-label svg{
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+}
+
+/* ---------- Chat list ---------- */
+.chat-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow-y: auto;
+}
+
+.chat-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 8px 9px 12px;
+    border-radius: 9px;
+    color: var(--color);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.18s, color 0.18s;
+}
+
+.chat-item-title{
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-item-delete{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted-color);
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.18s, background-color 0.18s, color 0.18s;
+}
+
+.chat-item:hover .chat-item-delete,
+.chat-item-delete:focus-visible{
+    opacity: 1;
+}
+
+.chat-item-delete:hover{
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+@media (hover: none){
+    .chat-item-delete{
+        opacity: 1;
+    }
+}
+
+.chat-item:hover{
+    background-color: var(--hover-surface);
+}
+
+.chat-item.active{
+    background-color: var(--active-surface);
+    font-weight: 500;
+}
+
+.chat-item.active::before{
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 18px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
+}
+
+.empty-chats{
+    padding: 6px 10px;
+    font-size: 13px;
+    color: var(--muted-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px){
+    .sidebar{
+        padding: 12px 10px;
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    .sidebar.open{
+        width: 230px;
+    }
+}
+
+/* ---------- Phone: drawer that slides over the chat ---------- */
+@media (max-width: 600px){
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 62px;
+        padding: 12px 9px;
+        gap: 12px;
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar.open{
+        width: min(78vw, 280px);
+    }
+
+    .sidebar-brand-name{
+        font-size: 14px;
+    }
+}

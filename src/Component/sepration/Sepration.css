@@ -1,0 +1,14 @@
+.sepration{
+    width: 7px;
+    height: 100dvh;
+    flex-shrink: 0;
+    background-color: #7e7a7a;
+    border-radius: 5px;
+}
+
+/* The sidebar is an overlay drawer on phones, so the bar is not needed */
+@media (max-width: 600px){
+    .sepration{
+        display: none;
+    }
+}
